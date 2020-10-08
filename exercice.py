@@ -27,7 +27,20 @@ def get_fibonacci_sequence(lenght, result = [0,1]):
 def get_sorted_dict_by_decimals(dict_arg):
 	return dict(sorted(dict_arg.items(), key = lambda t: t[1] % 1.0 ))
 
-def build_recursive_sequence_generator(TODO):
+def fibonacci_numbers(length):
+	initial_val = [0,1]
+	yield initial_val[0]
+	if length >= 2:
+		yield initial_val[1]
+	last_elems = deque(initial_val)
+	if length > 2:
+		for i in range(2,length):
+			fibo_num = last_elems[-1] + last_elems[-2]
+			last_elems.append(fibo_num)
+			last_elems.popleft()
+			yield fibo_num
+
+def build_recursive_sequence_generator(TODO,crepe):
 	pass
 
 if __name__ == "__main__":
@@ -56,6 +69,7 @@ if __name__ == "__main__":
 	print(get_sorted_dict_by_decimals(eggs))
 	print()
 
+	print("------ GENERATORS ------")
 	for fibo_num in fibonacci_numbers(10):
 		print(fibo_num, end=" ")
 	print("\n")
