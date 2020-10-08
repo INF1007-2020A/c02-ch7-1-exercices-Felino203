@@ -1,17 +1,31 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 from collections import deque
 
 
-def get_fibonacci_number(TODO):
-	pass
+def get_fibonacci_number(index):
+	if index == 0:
+		return 0
+	elif index == 1 :
+		return 1
+	else:
+		return get_fibonacci_number(index-1)+ get_fibonacci_number(index-2)
 
-def get_fibonacci_sequence(TODO):
-	pass
+def get_fibonacci_sequence(lenght, result = [0,1]):
+	if lenght == 0:
+		return None
+	elif lenght == 1:
+		return result[0:1]
+	elif lenght == 2:
+		return result[0:2]
+	elif len(result) < lenght:
+		return get_fibonacci_sequence(lenght,result + [result[-1] + result[-2]])
+	else:
+		return (result)
 
-def get_sorted_dict_by_decimals(TODO):
-	pass
+
+def get_sorted_dict_by_decimals(dict_arg):
+	return dict(sorted(dict_arg.items(), key = lambda t: t[1] % 1.0 ))
 
 def build_recursive_sequence_generator(TODO):
 	pass
